@@ -3,7 +3,7 @@ import pandas as pd
 import jieba
 import pandas as pd
 import numpy as np
-from sentence_transform import sentence_transform
+from sentence_2_sparse import sentence_transform
 
 class LDA():
     def __init__(self,

@@ -19,3 +19,19 @@ data/demo_score/电商_智能电视_正面帖_2500条.xlsx
 data/demo_score/电商_智能电视_负面帖_2500条.xlsx
 data/demo_score/data.xlsx
 data/demo_score/~$predict.xlsx
+demo/demo_score - 副本.py
+data/demo_score/predict.xlsx
+data/demo_score/predict.xlsx
+testdata/6000document/20180125/predict_v1.xlsx
+testdata/6000document/20180125/test_v1.xlsx
+testdata/6000document/20180126/predict_v1.xlsx
+testdata/6000document/20180126/test_v1.xlsx
+testdata/6000document/20180126/update_v1.xlsx
+test/6000条原帖.20180125.xlsx
+testdata/6000document/20180126/~$update_v1.xlsx
+creat_data/config.py
+
+.idea/Text-Classification.iml
+data/demo_score/~$data.xlsx
+creat_data/config.py
+creat_data/try - 副本.py

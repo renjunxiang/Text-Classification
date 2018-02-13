@@ -3,11 +3,22 @@ import pandas as pd
 import jieba
 
 jieba.setLogLevel('WARN')
-def sentence_transform(train_data,
-                       test_data=None,
-                       language='Chinese',
-                       hash=True,
-                       hashmodel='CountVectorizer'):
+
+
+def sentence_2_sparse(train_data,
+                      test_data=None,
+                      language='Chinese',
+                      hash=True,
+                      hashmodel='CountVectorizer'):
+    '''
+    
+    :param train_data: 训练集
+    :param test_data: 测试集
+    :param language: 语种
+    :param hash: 是否转哈希存储
+    :param hashmodel: 哈希计数的方式
+    :param return: 返回编码后稀疏矩阵
+    '''
     # 分词转one-hot dataframe
     if test_data==None:
         if hash == False:
@@ -61,10 +72,10 @@ if __name__ == '__main__':
                   '中国航天科技集团有限公司']
     test_data = ['全面从严测试']
     print('train_data\n',train_data,'\ntest_data\n',test_data)
-    print('sentence_transform(train_data=train_data,hash=False)\n',
-          sentence_transform(train_data=train_data, hash=False))
-    print('sentence_transform(train_data=train_data,hash=True)\n',
-          sentence_transform(train_data=train_data, hash=True))
-    m,n=sentence_transform(train_data=train_data, test_data=test_data, hash=True)
-    print('sentence_transform(train_data=train_data,test_data=test_data,hash=True)\n',
+    print('sentence_2_sparse(train_data=train_data,hash=False)\n',
+          sentence_2_sparse(train_data=train_data, hash=False))
+    print('sentence_2_sparse(train_data=train_data,hash=True)\n',
+          sentence_2_sparse(train_data=train_data, hash=True))
+    m,n=sentence_2_sparse(train_data=train_data, test_data=test_data, hash=True)
+    print('sentence_2_sparse(train_data=train_data,test_data=test_data,hash=True)\n',
           'train_data\n',m,'\ntest_data\n',n)

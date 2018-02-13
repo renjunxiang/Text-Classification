@@ -1,12 +1,12 @@
 import json
 import numpy as np
 import pandas as pd
-from supervised_classify import supervised_classify
+from models.supervised_classify import supervised_classify
 from data.demo_topic_score.config import word_name
 
-with open('D:/github/machine-learning/NLP/data/demo_topic_score/keyword.json', encoding='utf-8') as f:
+with open('D:/github/Text-Classification/data/demo_topic_score/keyword.json', encoding='utf-8') as f:
     keyword = json.load(f)
-with open('D:/github/machine-learning/NLP/data/demo_topic_score/train_data.json', encoding='utf-8') as f:
+with open('D:/github/Text-Classification/data/demo_topic_score/train_data.json', encoding='utf-8') as f:
     train_data = json.load(f)
 
 test_data=['京东华为手机牛逼','淘宝假货','小米手机不错','淘宝iphone假货']
@@ -28,5 +28,5 @@ result_table=pd.DataFrame({word_name['document']:[i[word_name['document']] for i
                            word_name['topics']:[i[word_name['topics']] for i in result]},
                           columns=[word_name['document'],word_name['topics']])
 # print(result_table)
-result_table.to_excel('D:/github/machine-learning/NLP/data/demo_topic_score/result.xlsx',index=False)
+result_table.to_excel('D:/github/Text-Classification/data/demo_topic_score/result.xlsx',index=False)
 
