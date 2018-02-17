@@ -1,5 +1,13 @@
 ﻿# Text-Classification
-
+[![](https://img.shields.io/badge/Python-3.5-blue.svg)](https://www.python.org/)<br>
+[![](https://img.shields.io/badge/baidu--aip-2.1.0.0-green.svg)](https://pypi.python.org/pypi/baidu-aip/2.1.0.0)
+[![](https://img.shields.io/badge/pandas-0.21.0-green.svg)](https://pypi.python.org/pypi/pandas/0.21.0)
+[![](https://img.shields.io/badge/numpy-1.13.1-green.svg)](https://pypi.python.org/pypi/numpy/1.13.1)
+[![](https://img.shields.io/badge/matplotlib-2.1.0-green.svg)](https://pypi.python.org/pypi/matplotlib/2.1.0)
+[![](https://img.shields.io/badge/jieba-0.39-green.svg)](https://pypi.python.org/pypi/jieba/0.39)
+[![](https://img.shields.io/badge/gensim-3.2.0-green.svg)](https://pypi.python.org/pypi/gensim/3.2.0)
+[![](https://img.shields.io/badge/scikit--learn-0.19.1-green.svg)](https://pypi.python.org/pypi/scikit-learn/0.19.1)
+[![](https://img.shields.io/badge/requests-2.18.4-green.svg)](https://pypi.python.org/pypi/requests/2.18.4)
 ## 语言
 Python3.5<br>
 ## 依赖库
