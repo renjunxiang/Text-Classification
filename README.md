@@ -42,7 +42,7 @@ y=[i['accusation'] for i in data]
 ![](https://github.com/renjunxiang/Text-Classification/blob/master/picture/data_multiple.png)
 
 ### 文本预处理：DataPreprocess.py
-**包含分词、转编码、长度统一。<br>
+**包含分词、转编码、长度统一。**<br>
 ``` python
 from DataPreprocess import DataPreprocess
 
@@ -59,7 +59,7 @@ x_seq = np.array(x_seq)
 ```
 
 ### 模型训练及预测：TextClassification.py
-已包含预处理以及Keras神经网络训练、预测，结果转标签<br>
+**包含预处理以及Keras神经网络训练、预测，结果转标签**<br>
 ``` python
 from TextClassification import TextClassification
 
