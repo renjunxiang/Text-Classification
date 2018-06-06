@@ -28,6 +28,7 @@ class TextClassification():
             # texts to sequence
             x_seq = process.text2seq(texts_cut=x_cut, tokenizer=tokenizer, tokenizer_savapah=None,
                                      num_words=num_words, maxlen=maxlen, batchsize=10000)
+            # list to array
             x_seq = np.array(x_seq)
             x = x_seq
             self.num_words = num_words
@@ -60,7 +61,7 @@ class TextClassification():
         model.fit(x=x, y=y, epochs=epochs, batch_size=batchsize)
         self.model = model
 
-    def predict(self, x=None, x_need_preprocess=True,
+    def predict(self, x=None, x_need_preprocess=True,model=None,
                 tokenizer=None, num_words=None, maxlen=None):
         if x_need_preprocess:
             if tokenizer is not None:
@@ -75,7 +76,8 @@ class TextClassification():
                                      num_words=num_words, maxlen=maxlen, batchsize=10000)
             x = np.array(x_seq)
 
-        model = self.model
+        if model is None:
+            model = self.model
         y = model.predict(x=x)
         return y
 
