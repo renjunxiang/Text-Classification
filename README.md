@@ -57,8 +57,8 @@ process = DataPreprocess()
 # cut texts
 x_cut = process.cut_texts(texts=x, need_cut=True, word_len=2, savepath=None)
 # texts to sequence
-x_seq = process.text2seq(texts_cut=x_cut, tokenizer=tokenizer, tokenizer_savapah=None,
-                         num_words=num_words, maxlen=maxlen, batchsize=10000)
+x_seq = process.text2seq(texts_cut=x_cut, tokenizer=None, tokenizer_savapah=None,
+                         num_words=500, maxlen=20, batchsize=10000)
 # list to array
 x_seq = np.array(x_seq)
 
