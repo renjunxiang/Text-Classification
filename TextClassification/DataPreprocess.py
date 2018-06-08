@@ -47,10 +47,10 @@ class DataPreprocess():
         :param texts_cut: 分词后的文本列表
         :param tokenizer:转换字典，keras的一个方法
         :param tokenizer_savapah:字典保存路径
-        :param num_words:字典保留的高频词数量
-        :param maxlen:保留长度
-        :param batchsize:每次参与提取的文档数
-        :return:向量列表
+        :param num_words: the maximum number of words to keep
+        :param maxlen: the number of words to keep in sentence
+        :param batchsize: Size of batch put in tokenizer
+        :return:sequence list
         eg. ata_transform.text2seq(texts_cut=train_fact_cut,num_words=2000, maxlen=500)
         '''
         texts_cut_len = len(texts_cut)
@@ -112,6 +112,7 @@ class DataPreprocess():
                 model_word2vec = word2vec.Word2Vec.load(word2vec_loadpath)
             else:
                 model_word2vec = word2vec.Word2Vec(texts_cut, sg=sg, size=size, window=window, min_count=min_count)
+            self.model_word2vec=model_word2vec
         if word2vec_savepath:
             model_word2vec.save(word2vec_savepath)
 

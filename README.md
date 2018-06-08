@@ -24,8 +24,8 @@ keras=2.1.5<br>
 
 ## 用法介绍
 ### 导入数据集:load_data
-**准备了单一标签的电商数据6000条和多标签的司法罪名数据15000条，数据仅供学术研究使用，禁止商业传播。**<br>
-* 单一标签的电商数据6000条为.csv格式，来源于真实电商评论，由'evaluation'和'label'两个字段组成，分别表示用户评论和标签，读入后为dataframe。<br>
+**准备了单一标签的电商数据4000多条和多标签的司法罪名数据15000多条，数据仅供学术研究使用，禁止商业传播。**<br>
+* 单一标签的电商数据4000条为.csv格式，来源于真实电商评论，由'evaluation'和'label'两个字段组成，分别表示用户评论和正负面标签，建议pandas读取，读入后为dataframe。<br>
 * 多标签的司法罪名数据15000条为.json格式，来源于2018‘法研杯’法律智能挑战赛（CAIL2018），由'fact'和'accusation'两个字段组成，分别表示事实陈述和罪名，读入后为列表。<br>
 ``` python
 from TextClassification.load_data import load_data
@@ -61,15 +61,23 @@ x_seq = process.text2seq(texts_cut=x_cut, tokenizer=tokenizer, tokenizer_savapah
                          num_words=num_words, maxlen=maxlen, batchsize=10000)
 # list to array
 x_seq = np.array(x_seq)
+
+# texts to word vector					 
+x_word_vec=process.text2vec(texts_cut=x, sg=1, size=128, window=5, min_count=1)
+# texts vector
+x_vec=np.array([sum(i)/len(i) for i in x_word_vec])
 ```
 
 ### 模型训练及预测：TextClassification.py
-**整合预处理以及Keras神经网络训练、预测，结果转标签，完整demo请参考demo.py**<br>
-* fit：整合预处理、模型训练，输入原始文本或者转为编码的定长序列、模型model、句子长度maxlen、词典大小num_words、词向量长度vec_size、epoch、batchsize。<br>
-* predict：整合预处理、模型预测，输入原始文本或者转为编码的定长序列、模型model，model为None则调用训练的模型。<br>
+**整合预处理以及Keras神经网络训练、预测，结果转标签，完整demo请参考demo文件夹**<br>
+* fit：整合预处理、模型训练，输入原始文本、转为编码的定长序列或者句向量。<br>
+* predict：整合预处理、模型预测，输入原始文本、转为编码的定长序列或者句向量，model为None则调用训练的模型。<br>
+* sklearn里面封装了SVC和LogisticRegression，中小型数据集表现要优于神经网络，要求标签为一维数组。<br>
+* 神经网络封装了简单的CNN和RNN，要求标签为二维数组，从而可以转变为独热编码，标签可以多个。<br>
 ``` python
 from TextClassification import TextClassification
 
+# neural network
 model=TextClassification()
 # train model
 model.fit(x=X_train, y=y_train, method='CNN',model=None,
@@ -83,6 +91,16 @@ y_predict=model.predict(x=X_test, x_need_preprocess=True)
 y_predict_label=model.label2toptag(predictions=y_predict,labelset=label_set)
 # calculate accuracy
 print(sum([y_predict_label[i]==y_test[i] for i in range(len(y_predict))])/len(y_predict))
+
+# sklearn
+model.fit(x=X_train,
+          y=y_train,
+          x_need_preprocess=True,
+          y_need_preprocess=False,
+          method='SVM', output_type='single')
+
+y_predict = model.predict(x=X_test, x_need_preprocess=True)
+print(sum(y_predict == np.array(y_test)) / len(y_predict))
 ```
 
 
