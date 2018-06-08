@@ -69,7 +69,7 @@ x_vec=np.array([sum(i)/len(i) for i in x_word_vec])
 ```
 
 ### 模型训练及预测：TextClassification.py
-**整合预处理以及Keras神经网络训练、预测，结果转标签，完整demo请参考demo文件夹**<br>
+**整合预处理、Keras神经网络、skleran机器学习的训练、预测，结果转标签，完整demo请参考demo文件夹**<br>
 * fit：整合预处理、模型训练，输入原始文本、转为编码的定长序列或者句向量。<br>
 * predict：整合预处理、模型预测，输入原始文本、转为编码的定长序列或者句向量，model为None则调用训练的模型。<br>
 * sklearn里面封装了SVC和LogisticRegression，中小型数据集表现要优于神经网络，要求标签为一维数组。<br>
