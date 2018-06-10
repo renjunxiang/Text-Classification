@@ -94,17 +94,18 @@ class DataPreprocess():
 
     def text2vec(self, texts_cut=None, model_word2vec=None,
                  word2vec_savepath=None, word2vec_loadpath=None,
-                 sg=1, size=128, window=5, min_count=1):
+                 sg=1, size=128, window=5, min_count=1, merge=True):
         '''
         文本的词语序列转为词向量序列，可以用于机器学习或者深度学习
-        :param texts_cut: 词语序列
-        :param model_word2vec: word2vec的模型
-        :param word2vec_savepath: word2vec保存路径
-        :param word2vec_loadpath: word2vec导入路径
+        :param texts_cut: Word list of texts
+        :param model_word2vec: word2vec model of gensim
+        :param word2vec_savepath: word2vec savrpath
+        :param word2vec_loadpath: word2vec loadpath
         :param sg: 0 CBOW,1 skip-gram
-        :param size: the dimensionality of the feature vectors
-        :param window: the maximum distance between the current and predicted word within a sentence
-        :param min_count: ignore all words with total frequency lower than this 
+        :param size: The dimensionality of the feature vectors
+        :param window: The maximum distance between the current and predicted word within a sentence
+        :param min_count: Ignore all words with total frequency lower than this 
+        :param merge: If Ture, calculate sentence average vector 
         :return: 
         '''
         if model_word2vec is None:
@@ -112,11 +113,15 @@ class DataPreprocess():
                 model_word2vec = word2vec.Word2Vec.load(word2vec_loadpath)
             else:
                 model_word2vec = word2vec.Word2Vec(texts_cut, sg=sg, size=size, window=window, min_count=min_count)
-            self.model_word2vec=model_word2vec
+            self.model_word2vec = model_word2vec
         if word2vec_savepath:
             model_word2vec.save(word2vec_savepath)
 
-        return [[model_word2vec[word] for word in text_cut if word in model_word2vec] for text_cut in texts_cut]
+        text_vec = [[model_word2vec[word] for word in text_cut if word in model_word2vec] for text_cut in texts_cut]
+        if merge:
+            return np.array([sum(i) / len(i) for i in text_vec])
+        else:
+            return text_vec
 
     def creat_label_set(self, labels):
         '''
