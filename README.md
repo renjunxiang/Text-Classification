@@ -45,7 +45,7 @@ y=[i['accusation'] for i in data]
 
 ### 文本预处理：DataPreprocess.py
 **用于对原始文本数据做预处理，包含分词、转编码、长度统一等方法。**<br>
-** 方法如下：<br>
+**方法如下：**<br>
 * cut_texts：分词，输入文本、保留词语长度，输出词语列表<br>
 * text2seq：词语列表转定长编码，输入词语列表，输出定长编码列表<br>
 * text2vec：词语列表转词向量列表，输入词语列表，输出词向量列表<br>
@@ -73,7 +73,7 @@ x_vec = process.text2vec(texts_cut=x, sg=1, size=128, window=5, min_count=1, mer
 **整合预处理、Keras神经网络、skleran机器学习的训练、预测，结果转标签，完整demo请参考demo文件夹**<br>
 sklearn里面封装了SVC和LogisticRegression，中小型数据集表现要优于神经网络，要求标签为一维数组。<br>
 神经网络封装了简单的CNN和RNN，要求标签为二维数组，从而可以转变为独热编码，标签可以多个。<br>
-** 方法如下：<br>
+**方法如下：**<br>
 * fit：整合预处理、模型训练，输入原始文本、转为编码的定长序列或者句向量。<br>
 * predict：整合预处理、模型预测，输入原始文本、转为编码的定长序列或者句向量，model为None则调用训练的模型。<br>
 
