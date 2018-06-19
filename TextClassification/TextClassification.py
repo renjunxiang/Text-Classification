@@ -10,7 +10,7 @@ class TextClassification():
     def fit(self, x=None, y=None, model=None,
             method='CNN', epochs=10, batchsize=256,
             x_need_preprocess=False, y_need_preprocess=False,
-            tokenizer=None, num_words=2000, maxlen=30,
+            tokenizer=None, num_words=2000, maxlen=None,
             vec_size=128, output_shape=None, output_type='multiple',
             **sklearn_param):
         '''
