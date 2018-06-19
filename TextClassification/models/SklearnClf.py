@@ -5,6 +5,10 @@ import numpy as np
 
 def SklearnClf(method='SVM', **param):
     '''
+    Good performance in small dataset
+    :param method: sklearn model name
+    :param param: sklearn model name param,such as "C","kernel"...
+    :return: sklearn model
     '''
     if method == 'SVM':
         model = SVC(**param)
