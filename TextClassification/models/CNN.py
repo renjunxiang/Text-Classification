@@ -8,8 +8,6 @@ def CNN(input_dim, input_length, vec_size, output_shape, output_type='multiple')
     Creat CNN net,use Embedding+CNN1D+GlobalMaxPool1D+Dense.
     You can change filters and dropout rate in code.
     This model was simple and much faster than RNN, but not stable.
-    I got low score in Kaggle "Toxic Comment Classification Challenge",
-    but top2 in preliminary of "CAIL2018(中国‘法研杯’法律智能挑战赛)"
 
     :param input_dim: Size of the vocabulary
     :param input_length:Length of input sequences

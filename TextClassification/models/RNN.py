@@ -7,8 +7,7 @@ def RNN(input_dim, input_length, vec_size, output_shape, output_type='multiple')
     '''
     Creat RNN net,use Embedding+GRU+GlobalMaxPool1D+Dense.
     You can change filters and dropout rate.
-    This model was put forward by a contestant in Kaggle "Toxic Comment Classification Challenge".
-    It was simple but effective.I use it in several competitions and projects.
+    It was simple but effective and used in several competitions and projects.
 
     :param input_dim: Size of the vocabulary
     :param input_length:Length of input sequences
