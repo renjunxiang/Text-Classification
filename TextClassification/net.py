@@ -3,11 +3,14 @@ from keras.layers import Dense, Embedding, Input
 from keras.layers import Conv1D, GlobalMaxPool1D, Dropout
 
 
-def CNN(input_dim, input_length, vec_size, output_shape, output_type='multiple'):
+def CNN(input_dim,
+        input_length,
+        vec_size,
+        output_shape,
+        output_type='multiple'):
     '''
     Creat CNN net,use Embedding+CNN1D+GlobalMaxPool1D+Dense.
-    You can change filters and dropout rate in code.
-    This model was simple and much faster than RNN, but not stable.
+    You can change filters and dropout rate in code..
 
     :param input_dim: Size of the vocabulary
     :param input_length:Length of input sequences
@@ -19,12 +22,13 @@ def CNN(input_dim, input_length, vec_size, output_shape, output_type='multiple')
     data_input = Input(shape=[input_length])
     word_vec = Embedding(input_dim=input_dim + 1,
                          input_length=input_length,
-                         output_dim=vec_size,
-                         mask_zero=0,
-                         name='Embedding')(data_input)
-    x = Conv1D(filters=128, kernel_size=[3], strides=1, padding='same', activation='relu')(word_vec)
+                         output_dim=vec_size)(data_input)
+    x = Conv1D(filters=128,
+               kernel_size=[3],
+               strides=1,
+               padding='same',
+               activation='relu')(word_vec)
     x = GlobalMaxPool1D()(x)
-    x = Dropout(0.1)(x)
     x = Dense(500, activation='relu')(x)
     x = Dropout(0.1)(x)
     if output_type == 'multiple':
@@ -32,13 +36,13 @@ def CNN(input_dim, input_length, vec_size, output_shape, output_type='multiple')
         model = Model(inputs=data_input, outputs=x)
         model.compile(loss='binary_crossentropy',
                       optimizer='adam',
-                      metrics=['accuracy'])
+                      metrics=['acc'])
     elif output_type == 'single':
         x = Dense(output_shape, activation='softmax')(x)
         model = Model(inputs=data_input, outputs=x)
         model.compile(loss='categorical_crossentropy',
                       optimizer='adam',
-                      metrics=['accuracy'])
+                      metrics=['acc'])
     else:
         raise ValueError('output_type should be multiple or single')
     return model
