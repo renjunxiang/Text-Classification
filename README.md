@@ -3,8 +3,7 @@
 [![](https://img.shields.io/badge/pandas-0.21.0-brightgreen.svg)](https://pypi.python.org/pypi/pandas/0.21.0)
 [![](https://img.shields.io/badge/numpy-1.13.1-brightgreen.svg)](https://pypi.python.org/pypi/numpy/1.13.1)
 [![](https://img.shields.io/badge/jieba-0.39-brightgreen.svg)](https://pypi.python.org/pypi/jieba/0.39)
-[![](https://img.shields.io/badge/Keras-2.2.4-brightgreen.svg)](https://pypi.python.org/pypi/Keras/2.1.5)
-[![](https://img.shields.io/badge/scikit--learn-0.19.1-brightgreen.svg)](https://pypi.python.org/pypi/scikit-learn/0.19.1)
+[![](https://img.shields.io/badge/Keras-2.2.4-brightgreen.svg)](https://pypi.python.org/pypi/Keras/2.2.4)
 
 
 ## 项目介绍
